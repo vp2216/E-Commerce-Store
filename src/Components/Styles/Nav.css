@@ -1,0 +1,35 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    top: 0;
+    left: 0;
+    position: sticky;
+    background: lightgray;
+}
+
+.site-name{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: green;
+}
+
+.cart-btn{
+    font-size: 1.5rem;
+}
+
+.cart-btn-span{
+    position: relative;
+}
+
+.cart-btn-span::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
