@@ -21,12 +21,19 @@
 
 .cart-btn-span{
     position: relative;
+    padding: 5px;
 }
 
 .cart-btn-span::before{
-    content: "";
-    width: 10px;
-    height: 10px;
+    content: attr(value);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    font-size: 0.7rem;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: red;
     position: absolute;

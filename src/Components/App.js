@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import Home from "./Home";
 import Nav from "./Nav";
 import "./Styles/App.css";
@@ -11,6 +11,15 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const value = { cart, setCart };
+
+  useEffect(() => {
+    if (localStorage.getItem("cartItems"))
+      setCart(localStorage.getItem("cartItems").split(",").map(Number));
+  }, []);
+
+  useEffect(() => {
+     localStorage.setItem("cartItems", cart);
+   }, [cart]);
 
   return (
     <CartContext.Provider value={value}>

@@ -1,0 +1,67 @@
+.cart-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 1rem 2rem 1rem;
+}
+
+.back-btn {
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  background: rgb(83, 212, 255);
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.back-btn:hover {
+  background: rgb(109, 218, 255);
+}
+
+.no-items {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cart-item {
+  width: 100%;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: right;
+}
+
+.btn-div {
+  width: 100%;
+  text-align: right;
+}
+
+.pay-btn {
+  border: 0;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgb(0, 216, 0);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+  letter-spacing: 1px;
+}
+
+.pay-btn:hover {
+  background: rgb(0, 255, 0);
+}

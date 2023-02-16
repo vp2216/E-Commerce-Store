@@ -12,7 +12,7 @@ function Nav() {
   return (
     <div className="nav">
       <span className="site-name" onClick={()=>navigate("/")}>GameShop</span>
-      <span className={cart.length !== 0 ? "cart-btn-span" : null}>
+      <span value={cart.length} className={cart.length !== 0 ? "cart-btn-span" : null}>
         <FaShoppingCart className="cart-btn" onClick={()=>navigate("/cart")}/>
       </span>
     </div>
