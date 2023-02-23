@@ -3,7 +3,7 @@ import "./Styles/Card.css";
 import { CartContext } from "./App";
 import { useNavigate } from "react-router-dom";
 
-function Card({ id, image, name, price, discription }) {
+function Card({ data, image, title, price, discription }) {
 
   const navigate = useNavigate();
 
@@ -11,17 +11,17 @@ function Card({ id, image, name, price, discription }) {
 
   return (
     <div className="card">
-      <img src={image} className="images" alt="game" />
+      <img src={`http://localhost:1337${image}`} className="images" alt="game" />
       <span className="info">
-        <span className="name">{name}</span>
+        <span className="name">{title}</span>
         <span className="price">Rs. {price}</span>
         <span className="desc">{discription}</span>
-        {cart.includes(id) ? (
+        {cart.find((e)=>e.id == data.id) ? (
           <span className="btn" onClick={() => navigate("/cart")}>
             Go to Cart
           </span>
         ) : (
-          <span className="btn" onClick={() => setCart([...cart, id])}>
+          <span className="btn" onClick={() => setCart([...cart, data])}>
             Add to Cart
           </span>
         )}

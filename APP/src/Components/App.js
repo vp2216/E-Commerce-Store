@@ -13,12 +13,13 @@ function App() {
   const value = { cart, setCart };
 
   useEffect(() => {
-    if (localStorage.getItem("cartItems"))
-      setCart(localStorage.getItem("cartItems").split(",").map(Number));
+    if (localStorage.getItem("cartItems")) {
+      setCart(JSON.parse(localStorage.getItem("cartItems")).cart)
+    }
   }, []);
 
   useEffect(() => {
-     localStorage.setItem("cartItems", cart);
+    localStorage.setItem("cartItems", JSON.stringify({ cart }));
    }, [cart]);
 
   return (

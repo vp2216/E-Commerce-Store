@@ -3,14 +3,20 @@ import { CartContext } from "./App";
 import { useNavigate } from "react-router-dom";
 import Cartcards from "./Cartcards";
 import "./Styles/Cart.css";
-import Products from "./Products";
 
 function Cart() {
   const [total, setTotal] = useState(0);
+  const [products, setProducts] = useState([]);
+
+  const { cart } = useContext(CartContext);
 
   const navigate = useNavigate();
 
-  const { cart, setCart } = useContext(CartContext);
+  useEffect(() => {
+    fetch("http://localhost:1337/api/products?populate=*")
+      .then((res) => res.json())
+      .then((data) => setProducts(data.data));
+  }, []);
 
   useEffect(() => {
     if (cart.length == 0) {
@@ -19,14 +25,12 @@ function Cart() {
     }
     let totalprice = 0;
     for (let i = 0; i < cart.length; i++) {
-      totalprice += parseInt(Products[cart[i]].price);
+      totalprice += cart[i].attributes.price;
     }
     setTotal(totalprice);
   }, [cart]);
 
-  function pay() {
-
-  }
+  function pay() {}
 
   return (
     <div className="cart-main">
@@ -40,7 +44,7 @@ function Cart() {
           {cart.map((data, i) => {
             return (
               <div className="cart-item" key={i}>
-                <Cartcards id={data} />
+                <Cartcards data={data} />
               </div>
             );
           })}
@@ -48,7 +52,13 @@ function Cart() {
       )}
       <div className="total">Total : Rs. {total}</div>
       <div className="btn-div">
-        <button className="pay-btn" disabled={cart.length === 0 ? true : false} onClick={pay}>Pay Now {">"}</button>
+        <button
+          className="pay-btn"
+          disabled={cart.length === 0 ? true : false}
+          onClick={pay}
+        >
+          Pay Now {">"}
+        </button>
       </div>
     </div>
   );
