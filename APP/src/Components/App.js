@@ -4,6 +4,8 @@ import Nav from "./Nav";
 import "./Styles/App.css";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import Cart from "./Cart";
+import Success from "./Success";
+import NoPage from "./NoPage";
 
 export const CartContext = createContext();
 
@@ -31,6 +33,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/*" element={<NoPage/>}/>
             </Routes>
           </div>
         </div>

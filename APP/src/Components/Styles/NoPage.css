@@ -1,0 +1,37 @@
+.nopage-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 10vh
+}
+
+.nopage-header {
+    font-size: 5rem;
+    font-weight: 800;
+    color: red;
+}
+
+.nopage-content {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.nopage-btn {
+  width: fit-content;
+  padding: 10px;
+  font-size: 1rem;
+  background: lightblue;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+  border: 0;
+}
+
+.nopage-btn:hover {
+  background: rgb(210, 236, 245);
+}
+

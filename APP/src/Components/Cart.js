@@ -6,17 +6,10 @@ import "./Styles/Cart.css";
 
 function Cart() {
   const [total, setTotal] = useState(0);
-  const [products, setProducts] = useState([]);
 
-  const { cart } = useContext(CartContext);
+  const { cart,setCart } = useContext(CartContext);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch("http://localhost:1337/api/products?populate=*")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
-  }, []);
 
   useEffect(() => {
     if (cart.length == 0) {
@@ -30,7 +23,21 @@ function Cart() {
     setTotal(totalprice);
   }, [cart]);
 
-  function pay() {}
+  async function pay() {
+    const formdata = new FormData();
+    for (let i = 0; i < cart.length; i++){
+      formdata.append(i+1, cart[i].id);
+    }
+    fetch("http://localhost:3001/create-checkout-session", {
+      method: "POST",
+      body: formdata
+    }).then(res => res.json())
+      .then(url => {
+        setCart([]);
+        window.location = url.url
+      }
+      );
+  }
 
   return (
     <div className="cart-main">
